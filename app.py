@@ -52,13 +52,13 @@ def load_data():
         "menu": {}
     }
 
-stored_data = load_data()
+data = load_data()
 
 # ================================
 # SESSION STATE
 # ================================
 if "menu" not in st.session_state:
-    st.session_state.menu = stored_data.get("menu", {})
+    st.session_state.menu = data.get("menu", {})
 
 # ================================
 # VIEW MODE
@@ -68,14 +68,14 @@ view_mode = st.query_params.get("view", "admin")
 # ================================
 # COMMON DATA
 # ================================
-base_url = stored_data.get("base_url", "")
-bride_name = stored_data.get("bride_name", "")
-groom_name = stored_data.get("groom_name", "")
-caterer_name = stored_data.get("caterer_name", "")
-address = stored_data.get("address", "")
-phone = stored_data.get("phone", "")
-quote = stored_data.get("quote", "")
-image_base64 = stored_data.get("image_base64", "")
+base_url = data.get("base_url", "")
+bride_name = data.get("bride_name", "")
+groom_name = data.get("groom_name", "")
+caterer_name = data.get("caterer_name", "")
+address = data.get("address", "")
+phone = data.get("phone", "")
+quote = data.get("quote", "")
+image_base64 = data.get("image_base64", "")
 
 # ================================
 # ADMIN PANEL
@@ -83,25 +83,39 @@ image_base64 = stored_data.get("image_base64", "")
 if view_mode == "admin":
     st.sidebar.title("🛠 Admin Panel")
 
-    # Base URL
     st.sidebar.subheader("🌐 App Configuration")
-    base_url = st.sidebar.text_input(
-        "App Base URL (example: http://172.20.10.4:8501)",
-        value=base_url
-    )
+    base_url = st.sidebar.text_input("App Base URL", value=base_url)
 
-    # Image Upload
     st.sidebar.subheader("📸 Bride & Groom Image")
     uploaded_image = st.sidebar.file_uploader(
         "Upload Image (jpg / png)",
         type=["jpg", "jpeg", "png"]
     )
-
     if uploaded_image:
         image_base64 = base64.b64encode(uploaded_image.getvalue()).decode("utf-8")
         st.sidebar.success("Image uploaded")
 
-    # 4. SAVE ALL CHANGES BUTTON
+    st.sidebar.subheader("💍 Couple Details")
+    bride_name = st.sidebar.text_input("Bride Name", value=bride_name)
+    groom_name = st.sidebar.text_input("Groom Name", value=groom_name)
+
+    st.sidebar.subheader("🍽 Caterer Details")
+    caterer_name = st.sidebar.text_input("Caterer Name", value=caterer_name)
+    address = st.sidebar.text_input("Address", value=address)
+    phone = st.sidebar.text_input("Phone", value=phone)
+    quote = st.sidebar.text_area("Wedding Quote", value=quote)
+
+    st.sidebar.subheader("📋 Menu Management")
+    category = st.sidebar.text_input("Menu Category")
+    item = st.sidebar.text_input("Menu Item")
+
+    if st.sidebar.button("➕ Add Item"):
+        if category and item:
+            st.session_state.menu.setdefault(category, []).append(item)
+            st.sidebar.success("Item added")
+        else:
+            st.sidebar.error("Both fields required")
+
     if st.sidebar.button("💾 Save All Changes"):
         save_data({
             "base_url": base_url,
@@ -111,187 +125,60 @@ if view_mode == "admin":
             "address": address,
             "phone": phone,
             "quote": quote,
-            "image_base64": image_base64, # Saved directly in JSON
+            "image_base64": image_base64,
             "menu": st.session_state.menu
         })
-        st.sidebar.success("All data saved successfully!")
+        st.sidebar.success("Saved successfully")
         st.rerun()
 
-    # Couple Details
-    st.sidebar.subheader("💍 Couple Details")
-    bride_name = st.sidebar.text_input("Bride Name", value=bride_name)
-    groom_name = st.sidebar.text_input("Groom Name", value=groom_name)
-
-    # Caterer Details
-    st.sidebar.subheader("🍽 Caterer Details")
-    caterer_name = st.sidebar.text_input("Name", value=caterer_name)
-    address = st.sidebar.text_input("Address", value=address)
-    phone = st.sidebar.text_input("Phone", value=phone)
-    quote = st.sidebar.text_area("Wedding Quote", value=quote)
-
-    # Menu Management
-    st.sidebar.subheader("📋 Menu Management")
-    category = st.sidebar.text_input("Menu Category")
-    item = st.sidebar.text_input("Menu Item")
-
-    if st.sidebar.button("➕ Add Item & Save"):
-        if category and item:
-            st.session_state.menu.setdefault(category, []).append(item)
-
-            save_data({
-                "base_url": base_url,
-                "bride_name": bride_name,
-                "groom_name": groom_name,
-                "caterer_name": caterer_name,
-                "address": address,
-                "phone": phone,
-                "quote": quote,
-                "image_base64": image_base64,
-                "menu": st.session_state.menu
-            })
-
-            st.sidebar.success("Saved successfully")
-            st.rerun()
-        else:
-            st.sidebar.error("Category and item required")
-
-    # QR Code
     st.sidebar.subheader("🔳 QR Code")
     if base_url:
-        guest_url = base_url.rstrip("/") + "/?view=guest"
-        qr = qrcode.make(guest_url)
+        qr_url = base_url.rstrip("/") + "/?view=guest"
+        qr = qrcode.make(qr_url)
         buf = io.BytesIO()
         qr.save(buf, format="PNG")
-
         st.sidebar.image(buf.getvalue())
-        st.sidebar.download_button(
-            "⬇ Download QR",
-            buf.getvalue(),
-            "wedding_menu_qr.png",
-            "image/png"
-        )
-    else:
-        st.sidebar.warning("Enter Base URL to generate QR")
-
-    # ================================
-    # ADMIN PREVIEW - Show menu preview in admin mode
-    # ================================
-    st.markdown("<hr style='margin: 40px 0;'>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align:center; color:#4f82a0;'>📱 Menu Preview</h2>", unsafe_allow_html=True)
-    st.markdown("<hr style='margin: 20px 0;'>", unsafe_allow_html=True)
-
-    # Image (fixed syntax)
-    if image_base64:
-        image_bytes = base64.b64decode(image_base64)
-        st.markdown("<div class='hero-img'>", unsafe_allow_html=True)
-        st.image(image_bytes, width="stretch")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    # Quote
-    if quote:
-        st.markdown(
-            f"<div class='quote'>{quote}</div>",
-            unsafe_allow_html=True
-        )
-
-    # ================================
-    # GUEST MENU POSTER VIEW
-    # ================================
-    st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
-
-    st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
-
-    if st.session_state.menu:
-    # Display couple names
-      if bride_name or groom_name:
-        couple_text = ""
-        if bride_name and groom_name:
-            couple_text = f"{bride_name} & {groom_name}"
-        elif bride_name:
-            couple_text = bride_name
-        else:
-            couple_text = groom_name
-        st.markdown(f"<div class='couple-names'>{couple_text}</div>", unsafe_allow_html=True)
-
-    if st.session_state.menu:
-    # Display couple names
-      if bride_name or groom_name:
-        couple_text = ""
-        if bride_name and groom_name:
-            couple_text = f"{bride_name} & {groom_name}"
-        elif bride_name:
-            couple_text = bride_name
-        else:
-            couple_text = groom_name
-        st.markdown(f"<div class='couple-names'>{couple_text}</div>", unsafe_allow_html=True)
-
-    if st.session_state.menu:
-        for cat, items in st.session_state.menu.items():
-            st.markdown(f"<div class='poster-category'>{cat.upper()}</div>", unsafe_allow_html=True)
-            st.markdown("<div class='poster-divider'></div>", unsafe_allow_html=True)
-
-            for food in items:
-                st.markdown(f"<div class='poster-item'>{food}</div>", unsafe_allow_html=True)
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    # Caterer Card
-    if caterer_name:
-        st.markdown(f"""
-        <div class="caterer-card">
-            <h3>🍽 Caterer Details</h3>
-            <p><b>Name:</b> {caterer_name}</p>
-            <p><b>Address:</b> {address}</p>
-            <p><b>Phone:</b> {phone}</p>
-        </div>
-        """, unsafe_allow_html=True)
+        st.sidebar.download_button("⬇ Download QR", buf.getvalue(), "wedding_menu_qr.png", "image/png")
 
 # ================================
-# GUEST VIEW - Only display when ?view=guest
+# GUEST / PREVIEW VIEW
 # ================================
-elif view_mode == "guest":
-    # Image (fixed syntax)
-    if image_base64:
-        image_bytes = base64.b64decode(image_base64)
-        st.markdown("<div class='hero-img'>", unsafe_allow_html=True)
-        st.image(image_bytes, width="stretch")
-        st.markdown("</div>", unsafe_allow_html=True)
 
-    # Quote
-    if quote:
-        st.markdown(
-            f"<div class='quote'>{quote}</div>",
-            unsafe_allow_html=True
-        )
-
-    # ================================
-    # GUEST MENU POSTER VIEW
-    # ================================
-    st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
-
-    st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
-
-    if st.session_state.menu:
-        for cat, items in st.session_state.menu.items():
-            st.markdown(f"<div class='poster-category'>{cat.upper()}</div>", unsafe_allow_html=True)
-            st.markdown("<div class='poster-divider'></div>", unsafe_allow_html=True)
-
-            for food in items:
-                st.markdown(f"<div class='poster-item'>{food}</div>", unsafe_allow_html=True)
-
+# Hero Image
+if image_base64:
+    st.markdown("<div class='hero-img'>", unsafe_allow_html=True)
+    st.image(base64.b64decode(image_base64), width="stretch")
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # Caterer Card
-    if caterer_name:
-        st.markdown(f"""
-        <div class="caterer-card">
-            <h3>🍽 Caterer Details</h3>
-            <p><b>Name:</b> {caterer_name}</p>
-            <p><b>Address:</b> {address}</p>
-            <p><b>Phone:</b> {phone}</p>
-        </div>
-        """, unsafe_allow_html=True)
+# Quote
+if quote:
+    st.markdown(f"<div class='quote'>{quote}</div>", unsafe_allow_html=True)
 
+# Menu Poster
+st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
+st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
 
+# Couple Names (ONLY ONCE)
+if bride_name or groom_name:
+    names = " & ".join(filter(None, [bride_name, groom_name]))
+    st.markdown(f"<div class='couple-names'>{names}</div>", unsafe_allow_html=True)
 
+# Menu
+for cat, items in st.session_state.menu.items():
+    st.markdown(f"<div class='poster-category'>{cat.upper()}</div>", unsafe_allow_html=True)
+    st.markdown("<div class='poster-divider'></div>", unsafe_allow_html=True)
+    for food in items:
+        st.markdown(f"<div class='poster-item'>{food}</div>", unsafe_allow_html=True)
 
+st.markdown("</div>", unsafe_allow_html=True)
+
+# Caterer Card
+if caterer_name:
+    st.markdown(f"""
+    <div class="caterer-card">
+        <h3>🍽 Caterer Details</h3>
+        <p><b>Name:</b> {caterer_name}</p>
+        <p><b>Address:</b> {address}</p>
+        <p><b>Phone:</b> {phone}</p>
+    </div>
+    """, unsafe_allow_html=True)
