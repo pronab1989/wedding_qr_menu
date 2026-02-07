@@ -8,6 +8,22 @@
     "quote": "Thank you for coming to our precious occasion and blessing us",
     "image_base64": "",
     "menu": {
+        "Stalls / Starters": [
+        "Chicken Reshmi Kabab",
+        "Crispy Baby Corn",
+        "Fish Ball"
+    ],
+    "Drinks & Beverages": [
+        "Mocktail",
+        "Tandoor Tea"
+    ],
+    "Desserts & Sweets": [
+        "Kesar Jilabi",
+        "Ice Cream"
+    ],
+    "Traditional Finish": [
+        "Pan"
+    ],
         "Starters": [
     "Fish Fry",
     "Paneer Pasinda",

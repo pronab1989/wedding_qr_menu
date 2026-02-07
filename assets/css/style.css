@@ -33,19 +33,38 @@ body {
     background: #fffaf0;
     border: 2px solid #4f82a0;
     border-radius: 14px;
-    padding: 18px 12px;
-    margin: 18px auto 28px;
-    text-align: center;
+
+    /* IMPORTANT: auto sizing */
+    padding: 16px 12px;
+    margin: 18px auto 22px;
     max-width: 420px;
+
+    /* Prevent mobile ghost boxes */
+    min-height: unset !important;
+    height: auto !important;
+
+    display: block;
+    text-align: center;
     box-shadow: 0 6px 18px rgba(79,130,160,0.15);
 }
 
-/* .menu-title-box span {
+.menu-title-text {
+    display: block;
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
+    font-size: 24px;
     letter-spacing: 3px;
     color: #4f82a0;
-} */
+}
+
+.menu-couple {
+    display: block;
+    margin-top: 6px;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: #4f82a0;
+}
+
 
 /* Poster Card */
 .menu-poster {
@@ -114,5 +133,21 @@ body {
     font-style: italic;
     color: #4f82a0;
     letter-spacing: 1px;
+}
+/* ===== MOBILE FIX (VERY IMPORTANT) ===== */
+@media screen and (max-width: 600px) {
+    .menu-title-box {
+        padding: 14px 10px;
+        margin-bottom: 18px;
+        box-shadow: 0 4px 12px rgba(79,130,160,0.12);
+    }
+
+    .menu-title-text {
+        font-size: 22px;
+    }
+
+    .menu-couple {
+        font-size: 16px;
+    }
 }
 

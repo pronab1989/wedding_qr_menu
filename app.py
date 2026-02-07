@@ -140,57 +140,7 @@ if view_mode == "admin":
         st.sidebar.image(buf.getvalue())
         st.sidebar.download_button("⬇ Download QR", buf.getvalue(), "wedding_menu_qr.png", "image/png")
 
-# ================================
-# GUEST / PREVIEW VIEW
-# ================================
 
-# # Hero Image
-# if image_base64:
-#     st.markdown("<div class='hero-img'>", unsafe_allow_html=True)
-#     st.image(base64.b64decode(image_base64), width="stretch")
-#     st.markdown("</div>", unsafe_allow_html=True)
-
-# # Quote
-# if quote:
-#     st.markdown(f"<div class='quote'>{quote}</div>", unsafe_allow_html=True)
-
-# st.markdown(f"""
-# <div class="menu-title-box">
-#     <span>WEDDING MENU</span>
-#     <div class="menu-couple">{bride_name} &amp; {groom_name}</div>
-# </div>
-# """, unsafe_allow_html=True)
-
-
-
-# # Menu Poster
-# st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
-# # st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
-
-# # Couple Names (ONLY ONCE)
-# # if bride_name or groom_name:
-# #     names = " & ".join(filter(None, [bride_name, groom_name]))
-# #     st.markdown(f"<div class='couple-names'>{names}</div>", unsafe_allow_html=True)
-
-# # Menu
-# for cat, items in st.session_state.menu.items():
-#     st.markdown(f"<div class='poster-category'>{cat.upper()}</div>", unsafe_allow_html=True)
-#     st.markdown("<div class='poster-divider'></div>", unsafe_allow_html=True)
-#     for food in items:
-#         st.markdown(f"<div class='poster-item'>{food}</div>", unsafe_allow_html=True)
-
-# st.markdown("</div>", unsafe_allow_html=True)
-
-# # Caterer Card
-# if caterer_name:
-#     st.markdown(f"""
-#     <div class="caterer-card">
-#         <h3>🍽 Caterer Details</h3>
-#         <p><b>Name:</b> {caterer_name}</p>
-#         <p><b>Address:</b> {address}</p>
-#         <p><b>Phone:</b> {phone}</p>
-#     </div>
-#     """, unsafe_allow_html=True)
 
 # ================================
 # GUEST / PREVIEW VIEW
