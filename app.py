@@ -42,6 +42,8 @@ def load_data():
             return json.load(f)
     return {
         "base_url": "",
+        "bride_name": "",
+        "groom_name": "",
         "caterer_name": "",
         "address": "",
         "phone": "",
@@ -67,6 +69,8 @@ view_mode = st.query_params.get("view", "admin")
 # COMMON DATA
 # ================================
 base_url = stored_data.get("base_url", "")
+bride_name = stored_data.get("bride_name", "")
+groom_name = stored_data.get("groom_name", "")
 caterer_name = stored_data.get("caterer_name", "")
 address = stored_data.get("address", "")
 phone = stored_data.get("phone", "")
@@ -101,6 +105,8 @@ if view_mode == "admin":
     if st.sidebar.button("💾 Save All Changes"):
         save_data({
             "base_url": base_url,
+            "bride_name": bride_name,
+            "groom_name": groom_name,
             "caterer_name": caterer_name,
             "address": address,
             "phone": phone,
@@ -110,6 +116,11 @@ if view_mode == "admin":
         })
         st.sidebar.success("All data saved successfully!")
         st.rerun()
+
+    # Couple Details
+    st.sidebar.subheader("💍 Couple Details")
+    bride_name = st.sidebar.text_input("Bride Name", value=bride_name)
+    groom_name = st.sidebar.text_input("Groom Name", value=groom_name)
 
     # Caterer Details
     st.sidebar.subheader("🍽 Caterer Details")
@@ -129,6 +140,8 @@ if view_mode == "admin":
 
             save_data({
                 "base_url": base_url,
+                "bride_name": bride_name,
+                "groom_name": groom_name,
                 "caterer_name": caterer_name,
                 "address": address,
                 "phone": phone,
@@ -187,6 +200,30 @@ if view_mode == "admin":
     st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
 
     st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
+
+    if st.session_state.menu:
+    # Display couple names
+      if bride_name or groom_name:
+        couple_text = ""
+        if bride_name and groom_name:
+            couple_text = f"{bride_name} & {groom_name}"
+        elif bride_name:
+            couple_text = bride_name
+        else:
+            couple_text = groom_name
+        st.markdown(f"<div class='couple-names'>{couple_text}</div>", unsafe_allow_html=True)
+
+    if st.session_state.menu:
+    # Display couple names
+      if bride_name or groom_name:
+        couple_text = ""
+        if bride_name and groom_name:
+            couple_text = f"{bride_name} & {groom_name}"
+        elif bride_name:
+            couple_text = bride_name
+        else:
+            couple_text = groom_name
+        st.markdown(f"<div class='couple-names'>{couple_text}</div>", unsafe_allow_html=True)
 
     if st.session_state.menu:
         for cat, items in st.session_state.menu.items():

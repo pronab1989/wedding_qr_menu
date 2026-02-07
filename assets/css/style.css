@@ -67,7 +67,7 @@ body {
     box-shadow: 0 12px 38px rgba(79, 130, 160, 0.14);
     position: relative;
     max-width: 520px;
-}
+  }
 
 /* Decorative corners - floral elements */
 .menu-poster::before {
@@ -110,6 +110,20 @@ body {
 .poster-title::after {
     content: "";
     display: none;
+}
+
+/* Category */
+.poster-category {
+/* Couple Names */
+.couple-names {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: #4f82a0;
+    margin: 16px 0 24px;
+    font-style: italic;
+    text-transform: capitalize;
 }
 
 /* Category */
@@ -242,7 +256,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px){
     .menu-poster {
         padding: 30px 16px;
         border-width: 2px;
@@ -260,4 +274,4 @@ body {
     .poster-item {
         font-size: 11px;
     }
-}
+}}
