@@ -167,9 +167,10 @@ if view_mode == "admin":
 # Image (fixed syntax)
 if image_base64:
     image_bytes = base64.b64decode(image_base64)
+    st.markdown("<div class='hero-img'>", unsafe_allow_html=True)
     st.image(image_bytes, width="stretch")
-
-st.markdown("## 💍 Wedding Menu")
+    st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("<div class='section-title'>💍 Wedding Menu</div>", unsafe_allow_html=True)
 
 # Quote
 if quote:
@@ -191,7 +192,8 @@ if caterer_name:
 
 # Menu
 if st.session_state.menu:
-    st.markdown("<div class='menu'><h3>📋 Menu</h3>", unsafe_allow_html=True)
+    st.markdown("<div class='menu'>", unsafe_allow_html=True)
+
     for cat, items in st.session_state.menu.items():
         st.markdown(f"<h4>{cat}</h4><ul>", unsafe_allow_html=True)
         for food in items:
@@ -200,3 +202,9 @@ if st.session_state.menu:
     st.markdown("</div>", unsafe_allow_html=True)
 else:
     st.info("The menu is being prepared. Please check back soon!")
+
+    st.markdown(
+    "<div class='footer-note'>Thank you for celebrating with us ❤️</div>",
+    unsafe_allow_html=True
+)
+
