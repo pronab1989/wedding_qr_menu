@@ -192,19 +192,18 @@ if caterer_name:
 
 # Menu
 if st.session_state.menu:
-    st.markdown("<div class='menu'>", unsafe_allow_html=True)
+    st.markdown("<div class='menu-card'>", unsafe_allow_html=True)
+
+    st.markdown("<div class='menu-title'>WEDDING MENU</div>", unsafe_allow_html=True)
 
     for cat, items in st.session_state.menu.items():
-        st.markdown(f"<h4>{cat}</h4><ul>", unsafe_allow_html=True)
-        for food in items:
-            st.markdown(f"<li>{food}</li>", unsafe_allow_html=True)
-        st.markdown("</ul>", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-else:
-    st.info("The menu is being prepared. Please check back soon!")
+        st.markdown(f"<div class='menu-category'>{cat}</div>", unsafe_allow_html=True)
+        st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
 
-    st.markdown(
-    "<div class='footer-note'>Thank you for celebrating with us ❤️</div>",
-    unsafe_allow_html=True
-)
+        for food in items:
+            st.markdown(f"<div class='menu-item'>{food}</div>", unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
 
