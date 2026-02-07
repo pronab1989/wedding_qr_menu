@@ -1,57 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap');
 
+/* Page background */
 body {
-    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    background: linear-gradient(135deg, #fff5f5, #f3e7e9);
     font-family: 'Poppins', sans-serif;
 }
 
-/* Quote */
+/* Limit width & center */
+.block-container {
+    max-width: 720px;
+    margin: auto;
+    padding-top: 0;
+}
+
+/* HERO IMAGE */
+.hero-img {
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+/* Wedding quote */
 .quote {
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    color: #7a2e2e;
-    margin: 15px 0;
+    font-size: 22px;
+    color: #7b1e1e;
+    margin: 18px 0 10px;
 }
 
-/* Caterer Card */
+/* Section title */
+.section-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    margin: 18px 0;
+    color: #5c0f0f;
+}
+
+/* Glass card */
 .card {
-    background: #fff;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 22px;
+    border-radius: 22px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    margin: 22px auto;
+    text-align: center;
 }
 
-/* Menu Box */
+/* Menu container */
 .menu {
     background: rgba(255,255,255,0.92);
-    padding: 18px;
-    border-radius: 18px;
-    margin-top: 25px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    padding: 26px 22px;
+    border-radius: 26px;
+    margin: 28px auto;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.15);
+    text-align: center;
 }
 
-/* Category Title */
+/* Category heading */
 .menu h4 {
     font-family: 'Playfair Display', serif;
+    font-size: 22px;
     color: #8b0000;
-    margin-bottom: 8px;
-    margin-top: 15px;
+    margin-top: 22px;
+    margin-bottom: 10px;
 }
 
-/* Menu Items */
+/* Menu list */
 .menu ul {
     list-style: none;
-    padding-left: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .menu li {
-    padding: 6px 0;
-    border-bottom: 1px dashed #ddd;
-    font-size: 15px;
+    font-size: 17px;
+    padding: 8px 0;
+    border-bottom: 1px dashed #cfa5a5;
 }
 
 .menu li:last-child {
     border-bottom: none;
+}
+
+/* Footer note */
+.footer-note {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin: 30px 0 10px;
 }
