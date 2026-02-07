@@ -190,20 +190,25 @@ if caterer_name:
     </div>
     """, unsafe_allow_html=True)
 
-# Menu
+
+# ================================
+# GUEST MENU POSTER VIEW
+# ================================
+
+st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
+
+st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
+
 if st.session_state.menu:
-    st.markdown("<div class='menu-card'>", unsafe_allow_html=True)
-
-    st.markdown("<div class='menu-title'>WEDDING MENU</div>", unsafe_allow_html=True)
-
     for cat, items in st.session_state.menu.items():
-        st.markdown(f"<div class='menu-category'>{cat}</div>", unsafe_allow_html=True)
-        st.markdown("<div class='divider'></div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='poster-category'>{cat.upper()}</div>", unsafe_allow_html=True)
+        st.markdown("<div class='poster-divider'></div>", unsafe_allow_html=True)
 
         for food in items:
-            st.markdown(f"<div class='menu-item'>{food}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='poster-item'>{food}</div>", unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 

@@ -1,69 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap');
 
-body {
-    background: #f5f5f5;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Center page like a menu card */
+/* Remove Streamlit default spacing */
 .block-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
     max-width: 520px;
-    margin: 20px auto;
-    padding: 0;
+    margin: auto;
 }
 
-/* Menu Card */
-.menu-card {
-    background: #fffdf8;
-    padding: 32px 24px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+/* Page background */
+body {
+    background: #e9eef2;
+}
+
+/* MAIN MENU POSTER */
+.menu-poster {
+    background: #fffdf7;
+    padding: 36px 28px;
+    margin: 24px auto;
+    border-radius: 14px;
     text-align: center;
-    border: 2px solid #e6d8c7;
+    border: 2px solid #c9d6e3;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 /* Title */
-.menu-title {
+.poster-title {
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
+    font-size: 28px;
     letter-spacing: 2px;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
 
-/* Category title */
-.menu-category {
-    font-family: 'Playfair Display', serif;
+/* Category */
+.poster-category {
+    font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
-    letter-spacing: 1.5px;
-    margin-top: 26px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 28px;
+    margin-bottom: 6px;
 }
 
-/* Divider */
-.divider {
-    width: 60px;
+/* Small divider line */
+.poster-divider {
+    width: 50px;
     height: 2px;
     background: #c8a97e;
-    margin: 6px auto 14px;
+    margin: 8px auto 14px;
 }
 
 /* Menu items */
-.menu-item {
-    font-size: 15px;
+.poster-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
     margin: 6px 0;
+}
+
+/* Hero image */
+.hero-img img {
+    border-radius: 10px;
+    margin-bottom: 18px;
 }
 
 /* Quote */
 .quote {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 18px;
-    margin: 18px 0;
-    color: #7a2e2e;
-}
-
-/* Image */
-.hero-img img {
-    border-radius: 14px;
     margin-bottom: 18px;
 }
