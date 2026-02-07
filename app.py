@@ -154,12 +154,13 @@ if image_base64:
 if quote:
     st.markdown(f"<div class='quote'>{quote}</div>", unsafe_allow_html=True)
 
-    # Wedding menu title box
-st.markdown("""
+st.markdown(f"""
 <div class="menu-title-box">
     <span>WEDDING MENU</span>
+    <div class="menu-couple">{bride_name} &amp; {groom_name}</div>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 # Menu Poster
@@ -167,9 +168,9 @@ st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
 # st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
 
 # Couple Names (ONLY ONCE)
-if bride_name or groom_name:
-    names = " & ".join(filter(None, [bride_name, groom_name]))
-    st.markdown(f"<div class='couple-names'>{names}</div>", unsafe_allow_html=True)
+# if bride_name or groom_name:
+#     names = " & ".join(filter(None, [bride_name, groom_name]))
+#     st.markdown(f"<div class='couple-names'>{names}</div>", unsafe_allow_html=True)
 
 # Menu
 for cat, items in st.session_state.menu.items():
