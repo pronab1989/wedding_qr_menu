@@ -97,6 +97,20 @@ if view_mode == "admin":
         image_base64 = base64.b64encode(uploaded_image.getvalue()).decode("utf-8")
         st.sidebar.success("Image uploaded")
 
+    # 4. SAVE ALL CHANGES BUTTON
+    if st.sidebar.button("💾 Save All Changes"):
+        save_data({
+            "base_url": base_url,
+            "caterer_name": caterer_name,
+            "address": address,
+            "phone": phone,
+            "quote": quote,
+            "image_base64": image_base64, # Saved directly in JSON
+            "menu": st.session_state.menu
+        })
+        st.sidebar.success("All data saved successfully!")
+        st.rerun()
+
     # Caterer Details
     st.sidebar.subheader("🍽 Caterer Details")
     caterer_name = st.sidebar.text_input("Name", value=caterer_name)
