@@ -377,13 +377,15 @@ for cat, items in st.session_state.menu.items():
     for food in items:
         st.markdown(f"<div class='poster-item'>{food}</div>", unsafe_allow_html=True)
 
-# -------- CATERER CARD --------
+# -------- CATERER DETAILS (CARD STYLE, SAFE) --------
 if caterer_name:
-    st.markdown(f"""
-    <div class="caterer-card">
-        <h3>🍽 Caterer Details</h3>
-        <p><b>Name:</b> {caterer_name}</p>
-        <p><b>Address:</b> {address}</p>
-        <p><b>Phone:</b> {phone}</p>
-    </div>
-    """, unsafe_allow_html=True)
+    with st.container(border=True):
+        st.markdown("### 🍽 Caterer Details")
+        st.write(f"**Name:** {caterer_name}")
+
+        if address:
+            st.write(f"**Address:** {address}")
+
+        if phone:
+            st.write(f"**Phone:** {phone}")
+
