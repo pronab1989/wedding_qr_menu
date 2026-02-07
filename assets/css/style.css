@@ -40,12 +40,12 @@ body {
     box-shadow: 0 6px 18px rgba(79,130,160,0.15);
 }
 
-.menu-title-box span {
+/* .menu-title-box span {
     font-family: 'Playfair Display', serif;
     font-size: 26px;
     letter-spacing: 3px;
     color: #4f82a0;
-}
+} */
 
 /* Poster Card */
 .menu-poster {
