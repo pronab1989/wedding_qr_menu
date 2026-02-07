@@ -163,51 +163,48 @@ if view_mode == "admin":
 # ================================
 # GUEST VIEW
 # ================================
+elif view_mode == "guest":
+    # Image (fixed syntax)
+    if image_base64:
+        image_bytes = base64.b64decode(image_base64)
+        st.markdown("<div class='hero-img'>", unsafe_allow_html=True)
+        st.image(image_bytes, width="stretch")
+        st.markdown("</div>", unsafe_allow_html=True)
 
-# Image (fixed syntax)
-if image_base64:
-    image_bytes = base64.b64decode(image_base64)
-    st.markdown("<div class='hero-img'>", unsafe_allow_html=True)
-    st.image(image_bytes, width="stretch")
+    # Quote
+    if quote:
+        st.markdown(
+            f"<div class='quote'>{quote}</div>",
+            unsafe_allow_html=True
+        )
+
+    # ================================
+    # GUEST MENU POSTER VIEW
+    # ================================
+    st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
+
+    st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
+
+    if st.session_state.menu:
+        for cat, items in st.session_state.menu.items():
+            st.markdown(f"<div class='poster-category'>{cat.upper()}</div>", unsafe_allow_html=True)
+            st.markdown("<div class='poster-divider'></div>", unsafe_allow_html=True)
+
+            for food in items:
+                st.markdown(f"<div class='poster-item'>{food}</div>", unsafe_allow_html=True)
+
     st.markdown("</div>", unsafe_allow_html=True)
-st.markdown("<div class='section-title'>💍 Wedding Menu</div>", unsafe_allow_html=True)
 
-# Quote
-if quote:
-    st.markdown(
-        f"<p class='quote' style='text-align:center;font-style:italic;'>{quote}</p>",
-        unsafe_allow_html=True
-    )
-
-# Caterer Card
-if caterer_name:
-    st.markdown(f"""
-    <div class="card">
-        <h3>🍽 Caterer Details</h3>
-        <p><b>Name:</b> {caterer_name}</p>
-        <p><b>Address:</b> {address}</p>
-        <p><b>Phone:</b> {phone}</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-# ================================
-# GUEST MENU POSTER VIEW
-# ================================
-
-st.markdown("<div class='menu-poster'>", unsafe_allow_html=True)
-
-st.markdown("<div class='poster-title'>WEDDING MENU</div>", unsafe_allow_html=True)
-
-if st.session_state.menu:
-    for cat, items in st.session_state.menu.items():
-        st.markdown(f"<div class='poster-category'>{cat.upper()}</div>", unsafe_allow_html=True)
-        st.markdown("<div class='poster-divider'></div>", unsafe_allow_html=True)
-
-        for food in items:
-            st.markdown(f"<div class='poster-item'>{food}</div>", unsafe_allow_html=True)
-
-st.markdown("</div>", unsafe_allow_html=True)
+    # Caterer Card
+    if caterer_name:
+        st.markdown(f"""
+        <div class="caterer-card">
+            <h3>🍽 Caterer Details</h3>
+            <p><b>Name:</b> {caterer_name}</p>
+            <p><b>Address:</b> {address}</p>
+            <p><b>Phone:</b> {phone}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 

@@ -7,20 +7,25 @@
     "image_base64": "",
     "menu": {
         "Starters": [
-            "Salad",
+            "Hara Bhara Kebab",
+            "Paneer Tikka",
             "Fish Fry",
-            "Chicken Fry",
-            "Mutton Fry"
+            "Chicken Fry"
         ],
         "Main Course": [
-            "Radha Ballavi",
+            "Butter Paneer",
             "Chicken Biryani",
-            "Mutton Curry",
+            "Veg Biryani",
             "Fish Curry"
         ],
         "Desserts": [
-            "Ras Malai",
             "Gulab Jamun",
-            "Ice Cream"
-        ]}
+            "Ice Cream",
+            "Cake"
+        ],
+        "Drinks": [
+            "Nimbu Sherbat",
+            "Soft Drinks"
+        ]
+    }
 }

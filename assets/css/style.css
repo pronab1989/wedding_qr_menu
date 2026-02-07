@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* Remove Streamlit default spacing */
 .block-container {
@@ -6,65 +12,252 @@
     padding-bottom: 0 !important;
     max-width: 520px;
     margin: auto;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
 }
 
 /* Page background */
 body {
-    background: #e9eef2;
+    background: linear-gradient(135deg, #e8f2f7 0%, #d9e8f0 100%) !important;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
 }
 
-/* MAIN MENU POSTER */
-.menu-poster {
-    background: #fffdf7;
-    padding: 36px 28px;
-    margin: 24px auto;
-    border-radius: 14px;
+/* ================================
+   HERO IMAGE
+   ================================ */
+.hero-img {
     text-align: center;
-    border: 2px solid #c9d6e3;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    margin-bottom: 25px;
 }
 
-/* Title */
+.hero-img img {
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(79, 130, 160, 0.15);
+    max-width: 100%;
+    height: auto;
+}
+
+/* ================================
+   QUOTE/MESSAGE
+   ================================ */
+.quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #4f82a0;
+    text-align: center;
+    font-style: italic;
+    margin: 25px auto;
+    padding: 20px 15px;
+    border-top: 2px solid #7fa8c9;
+    border-bottom: 2px solid #7fa8c9;
+}
+
+/* ================================
+   MAIN MENU POSTER (Elegant Card Design)
+   ================================ */
+.menu-poster {
+    background: linear-gradient(to bottom, #fafbfc 0%, #ffffff 50%, #f9fbfd 100%);
+    padding: 45px 32px;
+    margin: 30px auto;
+    border-radius: 16px;
+    text-align: center;
+    border: 4px solid #4f82a0;
+    box-shadow: 0 12px 38px rgba(79, 130, 160, 0.14);
+    position: relative;
+    max-width: 520px;
+}
+
+/* Decorative corners - floral elements */
+.menu-poster::before {
+    content: "❀❀❀";
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    font-size: 20px;
+    color: #4f82a0;
+    opacity: 0.5;
+    letter-spacing: 8px;
+}
+
+.menu-poster::after {
+    content: "❀❀❀";
+    position: absolute;
+    bottom: 12px;
+    right: 20px;
+    font-size: 20px;
+    color: #4f82a0;
+    opacity: 0.5;
+    letter-spacing: 8px;
+}
+
+/* Main menu title */
 .poster-title {
     font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    letter-spacing: 2px;
-    margin-bottom: 24px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #4f82a0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #7fa8c9;
+    padding-bottom: 12px;
+}
+
+/* Title underline */
+.poster-title::after {
+    content: "";
+    display: none;
 }
 
 /* Category */
 .poster-category {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    letter-spacing: 2px;
-    margin-top: 28px;
-    margin-bottom: 6px;
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: #5a91ab;
+    margin-top: 26px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 /* Small divider line */
 .poster-divider {
-    width: 50px;
+    width: 45px;
     height: 2px;
-    background: #c8a97e;
-    margin: 8px auto 14px;
+    background: #7fa8c9;
+    margin: 8px auto 12px;
 }
 
 /* Menu items */
 .poster-item {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px;
-    margin: 6px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #2c3e50;
+    margin: 8px 0;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
 }
 
-/* Hero image */
-.hero-img img {
+/* ================================
+   CATERER CARD
+   ================================ */
+.caterer-card {
+    background: linear-gradient(135deg, #e8f4f8 0%, #f5f9fb 100%);
+    border-left: 5px solid #4f82a0;
     border-radius: 10px;
-    margin-bottom: 18px;
+    padding: 22px;
+    margin: 30px auto;
+    box-shadow: 0 5px 18px rgba(79, 130, 160, 0.1);
+    max-width: 520px;
 }
 
-/* Quote */
-.quote {
-    font-family: 'Cormorant Garamond', serif;
+.caterer-card h3 {
+    font-family: 'Playfair Display', serif;
     font-size: 18px;
-    margin-bottom: 18px;
+    color: #4f82a0;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+
+.caterer-card p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: #555555;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.caterer-card b {
+    color: #4f82a0;
+    font-weight: 600;
+}
+
+/* ================================
+   MOBILE RESPONSIVE
+   ================================ */
+@media (max-width: 640px) {
+    .block-container {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .menu-poster {
+        padding: 35px 22px;
+        border-width: 3px;
+        margin: 20px auto;
+    }
+
+    .menu-poster::before,
+    .menu-poster::after {
+        font-size: 16px;
+        top: 8px;
+        bottom: 8px;
+    }
+
+    .menu-poster::before {
+        left: 12px;
+    }
+
+    .menu-poster::after {
+        right: 12px;
+    }
+
+    .poster-title {
+        font-size: 26px;
+        letter-spacing: 2.5px;
+    }
+
+    .poster-category {
+        font-size: 12px;
+        letter-spacing: 2px;
+        margin-top: 20px;
+    }
+
+    .poster-item {
+        font-size: 12px;
+    }
+
+    .quote {
+        font-size: 14px;
+        padding: 15px 12px;
+        margin: 20px auto;
+    }
+
+    .caterer-card {
+        padding: 18px;
+        margin: 25px auto;
+    }
+
+    .caterer-card h3 {
+        font-size: 16px;
+    }
+
+    .caterer-card p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-poster {
+        padding: 30px 16px;
+        border-width: 2px;
+    }
+
+    .poster-title {
+        font-size: 22px;
+        letter-spacing: 1.5px;
+    }
+
+    .poster-category {
+        font-size: 11px;
+    }
+
+    .poster-item {
+        font-size: 11px;
+    }
 }
