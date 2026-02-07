@@ -9,25 +9,29 @@
     "image_base64": "",
     "menu": {
         "Starters": [
-            "Hara Bhara Kebab",
-            "Paneer Tikka",
-            "Fish Fry",
-            "Chicken Fry"
-        ],
-        "Main Course": [
-            "Butter Paneer",
-            "Chicken Biryani",
-            "Veg Biryani",
-            "Fish Curry"
-        ],
-        "Desserts": [
-            "Gulab Jamun",
-            "Ice Cream",
-            "Cake"
-        ],
-        "Drinks": [
-            "Nimbu Sherbat",
-            "Soft Drinks"
-        ]
+    "Fish Fry",
+    "Paneer Pasinda",
+    "Salad",
+    "Sauce"
+],
+"Main Course": [
+    "Rumali Roti",
+    "Mutton Keema Dal Makhani",
+    "Dal Makhani",
+    "Mutton Biryani",
+    "Bhaat (Rice)",
+    "Veg Biryani",
+    "Chicken Chaap",
+    "Maach (Fish)",
+    "Paneer"
+],
+"Sides & Accompaniments": [
+    "Chutney",
+    "Papad"
+],
+"Desserts": [
+    "Rasmadhuri",
+    "Dilkhusa Sandesh"
+]
     }
 }
