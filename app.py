@@ -359,14 +359,14 @@ if quote:
 if bride_name or groom_name:
     st.markdown(f"""
     <div class="menu-title-box">
-        <span class="menu-title-text">WEDDING MENU</span>
+        <span class="menu-title-text">RECEPTION MENU</span>
         <div class="menu-couple">{bride_name} &amp; {groom_name}</div>
     </div>
     """, unsafe_allow_html=True)
 else:
     st.markdown("""
     <div class="menu-title-box">
-        <span class="menu-title-text">WEDDING MENU</span>
+        <span class="menu-title-text">RECEPTION MENU</span>
     </div>
     """, unsafe_allow_html=True)
 
