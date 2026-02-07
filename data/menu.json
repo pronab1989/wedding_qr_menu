@@ -1,0 +1,26 @@
+{
+    "base_url": "",
+    "caterer_name": "Royal Catering Service",
+    "address": "Kolkata, West Bengal",
+    "phone": "+91 9007780831",
+    "quote": "Thank you for coming to our precious occasion and blessing us",
+    "image_base64": "",
+    "menu": {
+        "Starters": [
+            "Salad",
+            "Fish Fry",
+            "Chicken Fry",
+            "Mutton Fry"
+        ],
+        "Main Course": [
+            "Radha Ballavi",
+            "Chicken Biryani",
+            "Mutton Curry",
+            "Fish Curry"
+        ],
+        "Desserts": [
+            "Ras Malai",
+            "Gulab Jamun",
+            "Ice Cream"
+        ]}
+}
